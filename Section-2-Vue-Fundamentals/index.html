@@ -7,6 +7,12 @@
   <body>
     <div id="app" v-cloak>
       <p>{{ fullName() }}</p>
+      <hr>
+      <label for="firstName">First Name</label>
+      <input v-model="firstName" type="text" name="firstName" id="firstName">
+      
+      <label for="lastName">Last Name</label>
+      <input v-model="lastName" type="text" name="lastName" id="lastName">
     </div>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="app.js"></script>
