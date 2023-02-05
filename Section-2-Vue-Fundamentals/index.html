@@ -7,6 +7,8 @@
   <body>
     <div id="app" v-cloak>
       <p>{{ fullName() }}</p>
+      <!-- you can use v-bind:href OR :href -->
+      <p><a v-bind:href="url" target="_blank">Google </a></p>
       <hr>
       <label for="firstName">First Name</label>
       <input v-model="firstName" type="text" name="firstName" id="firstName">
