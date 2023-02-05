@@ -5,7 +5,14 @@
     <link rel="stylesheet" type="text/css" href="main.css" />
   </head>
   <body>
-    <div id="app">Hey</div>
+    <div id="app">
+      <!-- Expressions we can use in curly braces -->
+      <p>{{ 2 + 2 }}</p>
+      <p>{{ firstName + " " + lastName }}</p>
+      <!-- This will not work  -->
+      <!-- <p>{{ const foo = 5 }}</p>  ❌ -->
+
+    </div>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="app.js"></script>
   </body>
