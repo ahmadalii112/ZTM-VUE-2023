@@ -6,7 +6,9 @@
   </head>
   <body>
     <div id="app">
-      <p>{{ firstName }} {{ lastName}}</p>
+      <!-- you can use template litrals but its preffable to use logic in js file -->
+      <!-- <p>{{ `${firstName} ${lastName.toUpperCase()}`}}</p> -->
+      <p>{{ fullName() }}</p>
     </div>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="app.js"></script>
