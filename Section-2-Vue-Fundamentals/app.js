@@ -1,18 +1,12 @@
-const app = Vue.createApp({
+const vm = Vue.createApp({
     data() {
         return {
             firstName: "Ahmad",
             lastName: "Ali",
         }
     },
-});
-app.mount('#app');
-const app1 = Vue.createApp({
-    data() {
-        return {
-            firstName: "Aiman",
-            lastName: "Ali",
-        }
-    },
-});
-app1.mount('#app1');
+}).mount('#app');
+
+// setTimeout(() => {
+//     vm.firstName = "Aiman";
+// }, 2000);
