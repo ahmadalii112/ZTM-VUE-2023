@@ -15,12 +15,15 @@
       <label for="firstName">First Name</label>
       <input v-model="firstName" type="text" name="firstName" id="firstName">
       
+      <label for="middleName">Middle Name</label>
+      <input @keyup.enter="updateMiddleName" type="text" name="middleName" id="middleName">
+      
       <label for="lastName">Last Name</label>
       <input :value="lastName" 
               @input.prevent="updateLastName('Last Name Event Trigger', $event)" type="text" name="lastName" id="lastName">
       <!-- you can use v-on:click OR @click -->
       <button type="button" v-on:click="increment">Incremnet</button>
-      <button type="button" v-on:click="age--">Decremnet</button>
+      <button type="button" v-on:click.ctrl="age--">Decremnet</button>
     </div>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="app.js"></script>
