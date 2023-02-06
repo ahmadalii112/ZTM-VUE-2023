@@ -10,10 +10,10 @@
       <!-- you can use v-bind:href OR :href -->
       <p><a v-bind:href="url" target="_blank">Google </a></p>
       <p v-html="rawUrl"></p>
-      <p>{{ age }}</p>
+      <p>{{ typeof age }}</p>
       <hr>
       <label for="firstName">First Name</label>
-      <input v-model="firstName" type="text" name="firstName" id="firstName">
+      <input v-model.lazy.trim="firstName" type="text" name="firstName" id="firstName">
       
       <label for="middleName">Middle Name</label>
       <input @keyup.enter="updateMiddleName" type="text" name="middleName" id="middleName">
@@ -21,6 +21,8 @@
       <label for="lastName">Last Name</label>
       <input :value="lastName" 
               @input.prevent="updateLastName('Last Name Event Trigger', $event)" type="text" name="lastName" id="lastName">
+      <label>Age</label>
+      <input v-model.number="age" type="number" />
       <!-- you can use v-on:click OR @click -->
       <button type="button" v-on:click="increment">Incremnet</button>
       <button type="button" @click="age--">Decremnet</button>
