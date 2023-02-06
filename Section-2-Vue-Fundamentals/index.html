@@ -17,7 +17,7 @@
       
       <label for="lastName">Last Name</label>
       <input :value="lastName" 
-              @input="updateLastName('Last Name Event Trigger', $event)" type="text" name="lastName" id="lastName">
+              @input.prevent="updateLastName('Last Name Event Trigger', $event)" type="text" name="lastName" id="lastName">
       <!-- you can use v-on:click OR @click -->
       <button type="button" v-on:click="increment">Incremnet</button>
       <button type="button" v-on:click="age--">Decremnet</button>
