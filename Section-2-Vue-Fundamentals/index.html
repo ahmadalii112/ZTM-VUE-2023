@@ -6,7 +6,7 @@
   </head>
   <body>
     <div id="app" v-cloak>
-      <p>{{ fullName() }}</p>
+      <p>{{ fullName }}</p> <!-- vue treats computed property as data that's why we remove "()" -->
       <!-- you can use v-bind:href OR :href -->
       <p><a v-bind:href="url" target="_blank">Google </a></p>
       <p v-html="rawUrl"></p>
