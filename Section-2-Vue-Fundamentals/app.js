@@ -12,6 +12,18 @@ let vm = Vue.createApp({
                 // classname: condition
                 purple: this.isPurple,
             }
+        },
+        circle_size() {
+            return {
+                width: this.size + 'px',
+                height: this.size + 'px',
+                lineHeight: this.size + 'px'
+            }
+        },
+        circle_rotation() {
+            return {
+                transform: 'rotate(30deg)'
+            }
         }
     },
 }).mount('#app')
