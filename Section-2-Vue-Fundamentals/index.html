@@ -1,33 +1,32 @@
-<!DOCTYPE html>
+<!DOCTYPE>
 <html>
-  <head>
-    <title>VueJS Course</title>
-    <link rel="stylesheet" type="text/css" href="main.css" />
-  </head>
-  <body>
-    <div id="app" v-cloak>
-      <p>{{ fullName }}</p> <!-- vue treats computed property as data that's why we remove "()" -->
-      <!-- you can use v-bind:href OR :href -->
-      <p><a v-bind:href="url" target="_blank">Google </a></p>
-      <p v-html="rawUrl"></p>
-      <p>{{ typeof age }}</p>
-      <hr>
-      <label for="firstName">First Name</label>
-      <input v-model.lazy.trim="firstName" type="text" name="firstName" id="firstName">
-      
-      <label for="middleName">Middle Name</label>
-      <input @keyup.enter="updateMiddleName" type="text" name="middleName" id="middleName">
-      
-      <label for="lastName">Last Name</label>
-      <input :value="lastName" 
-              @input.prevent="updateLastName('Last Name Event Trigger', $event)" type="text" name="lastName" id="lastName">
-      <label>Age</label>
-      <input v-model.number="age" type="number" />
-      <!-- you can use v-on:click OR @click -->
-      <button type="button" v-on:click="increment">Incremnet</button>
-      <button type="button" @click="age--">Decremnet</button>
+
+<head>
+  <title>VueJS Course</title>
+  <link rel="stylesheet" type="text/css" href="main.css" />
+</head>
+
+<body>
+  <div id="app">
+    <label>
+      <input v-model="isPurple" type="checkbox" /> Purple
+    </label>
+    <select v-model="selectedColorProperty">
+      <option value="">White</option>
+      <option value="text-black">black</option>
+      <option value="text-orange">orange</option>
+    </select>
+
+                          <!--{classname : condition} -->
+    <!-- <div class="circle" :class="{purple: isPurple}"> -->
+                                <!-- for multiple classes function or property we use "[]"  -->
+    <div class="circle" :class="[selectedColorProperty, circle_classes]">
+      Hi!
     </div>
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <script src="app.js"></script>
-  </body>
+  </div>
+
+  <script src="https://unpkg.com/vue@next"></script>
+  <script src="app.js"></script>
+</body>
+
 </html>
