@@ -21,11 +21,20 @@ const vm = Vue.createApp({
             this.middleName = event.target.value;
         }
     },
-    // if you have a functions that calculates the property you can use computed properties
     computed: {
         fullName() {
             console.log("Full Name Computed Called");
             return `${this.firstName} ${this.middleName}  ${this.lastName.toUpperCase()} `;
         },
+    },
+    /* watchers watch you data for changes. whenever a change occurs you can run a function to execute additional logic */
+    watch: {
+        age(newVal, oldVal){
+            // computed properties can never be asynchronus while
+            // you have freedom to perform asynchronus tasks in watchers
+            setTimeout(() => {
+                this.age = 25
+            }, 2000);
+        }
     },
 }).mount('#app');
