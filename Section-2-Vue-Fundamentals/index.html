@@ -8,21 +8,17 @@
 
 <body>
   <div id="app">
-    <label>
-      <input v-model="isPurple" type="checkbox" /> Purple
-    </label>
-    <select v-model="selectedColorProperty">
-      <option value="">White</option>
-      <option value="text-black">black</option>
-      <option value="text-orange">orange</option>
+    <p v-if="mode == 1">showing v-if directive content</p>
+    <template v-else-if="mode == 2">
+      <p>Bonus Tag</p>
+      <h3 >v-else-if</h3>
+    </template>
+    <p v-else>v-else</p>
+    <select v-model="mode">
+      <option value="1">V-IF</option>
+      <option value="2">V-Else-IF</option>
+      <option value="3">V-Else</option>
     </select>
-
-    <input type="number" v-model="size">
-
-    <div class="circle" :class="[selectedColorProperty, circle_classes]" :style="[circle_size, circle_rotation]
-       ">
-      Hi!
-    </div>
   </div>
 
   <script src="https://unpkg.com/vue@next"></script>
