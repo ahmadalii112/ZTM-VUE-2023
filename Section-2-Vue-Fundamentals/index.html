@@ -8,21 +8,12 @@
 
 <body>
   <div id="app">
-    <ul>
-      <li v-for="(bird, index) in birds" :class="bird" :key="bird">
-        {{ bird }} - {{index}}
-      </li>
-    </ul>
-
-    <hr>
-
-    <ul>
-      <li v-for="person in people" :class="bird">
-        <div v-for="(value, key, index) in person">
-          {{ key }}  {{ value }}  {{index}}
-        </div>
-      </li>
-    </ul>
+    <button type="button" class="move" @click="move">Move to Bottom</button>
+    <div class="card" v-for="person in people" :key="person.name">
+      <h3>{{person.name}}</h3>
+      <p>{{person.message}}</p>
+      <input type="text" name="" id="">
+    </div>
   </div>
 
   <script src="https://unpkg.com/vue@next"></script>

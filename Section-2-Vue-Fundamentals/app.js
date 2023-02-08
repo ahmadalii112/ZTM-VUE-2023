@@ -1,12 +1,25 @@
 let vm = Vue.createApp({
     data() {
         return {
-            birds: ['Pigeons', 'Eagles', 'Doves', 'Parrots'],
-            people: [
-                { name: 'John', age: 20 },
-                { name: 'Rick', age: 18 },
-                { name: 'Amy', age: 33 }
+            people: [{
+                    name: 'John',
+                    message: 'Hello world!'
+                },
+                {
+                    name: 'Rick',
+                    message: 'I like pie.'
+                },
+                {
+                    name: 'Amy',
+                    message: 'Skydiving is fun!'
+                }
             ]
         }
-    }
-}).mount('#app');
+    },
+    methods: {
+        move() {
+            const first = this.people.shift(); 
+            this.people.push(first);
+        }
+    },
+}).mount('#app')
