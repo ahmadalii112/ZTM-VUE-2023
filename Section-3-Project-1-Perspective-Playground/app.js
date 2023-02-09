@@ -30,6 +30,11 @@ Vue.createApp({
                 rotateY(${this.rotateY}deg)
                 rotateZ(${this.rotateZ}deg)`
             }
+        },
+        pointer() {
+            return {
+                cursor: 'pointer',
+            }
         }
     },
 }).mount('#app')
