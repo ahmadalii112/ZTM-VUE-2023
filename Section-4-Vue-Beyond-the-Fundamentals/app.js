@@ -4,4 +4,8 @@ let vm = Vue.createApp({
       message: "Hello world!"
     }
   }
-}).mount('#app')
+})
+vm.mount('#app')
+// setTimeout(() => {
+//   vm.mount('#app')
+// }, 3000);
