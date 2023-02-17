@@ -12,8 +12,8 @@
     },
   }
 </script>
-<style scoped>
-p {
-    color: red;
+<style scoped lang="scss">
+p:hover {
+    color: darken($color: #cc4444, $amount: 15%);
 }
 </style>
