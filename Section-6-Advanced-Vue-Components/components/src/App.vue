@@ -1,8 +1,7 @@
 <template>
     <h3>Hey</h3>
-    <button type="button" @click="age++">Button</button>
   <Greeting :age="age"/>
-  <user :age="age"></user>
+  <user :age="age" @age-change="age++"></user> <!-- Listen to an emit event we use 👈 -->
 </template>
 
 <script>
