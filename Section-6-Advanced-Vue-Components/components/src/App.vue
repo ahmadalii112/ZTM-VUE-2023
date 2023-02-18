@@ -1,7 +1,7 @@
 <template>
     <h3>Hey</h3>
   <Greeting :age="age"/>
-  <user :age="age" @age-change="age++"></user> <!-- Listen to an emit event we use 👈 -->
+  <user :age="age" @age-change="updateAge"></user> <!-- Listen to an emit event we use 👈 -->
 </template>
 
 <script>
@@ -18,6 +18,11 @@ import User from '@/components/User.vue'
       return {
         age:20
       }
-    }
+    },
+    methods: {
+        updateAge(num) {
+            this.age = this.age + num;
+        }
+    },
   }
 </script>
