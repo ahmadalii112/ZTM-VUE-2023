@@ -7,7 +7,16 @@
 <script>
 export default {
   name: "User",
-  props: ["age"],
+  props: {
+    "age": {
+      type: Number, // if we use to check multiple data type then we use array like [Number, String]
+      // required: true,
+      // default: 20
+      validator (value) {
+        return value < 130
+      }
+    }
+  },
   emits: ['age-change'], // this process is necessary when we need to make any changes in props
   methods: {
     onClickAge() {
