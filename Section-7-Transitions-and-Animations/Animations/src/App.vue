@@ -6,8 +6,9 @@
     v-enter-active => fade-enter-active
     v-enter-to     => fade-enter-to    
    -->
-  <transition name="fade">
-    <h2 v-if="flag">Hello World!</h2>
+  <transition name="fade" mode="out-in">
+    <h2 v-if="flag" key="primary">Hello World!</h2>
+    <h2 v-else key="secondry">Good Bye!</h2>
   </transition>
 </template>
 
@@ -27,11 +28,11 @@ export default {
   opacity: 0;
 }
 .fade-enter-active {
-  transition: all 0.25s linear;
+  transition: all 3s linear;
 }
 
 .fade-leave-to {
-  transition: all 0.25s linear;
+  transition: all 3s linear;
   opacity: 0;
 }
 </style>
