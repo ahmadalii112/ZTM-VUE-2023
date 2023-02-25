@@ -1,14 +1,8 @@
 <template>
   <button type="button" @click="flag = !flag">Toggle</button>
-  <!-- 
-    default        |  when we give name
-    v-enter-from   => fade-enter-from    
-    v-enter-active => fade-enter-active
-    v-enter-to     => fade-enter-to    
-   -->
-  <transition name="fade" mode="out-in">
-    <h2 v-if="flag" key="primary">Hello World!</h2>
-    <h2 v-else key="secondry">Good Bye!</h2>
+                                      <!-- appear => sometimes U want to play the animation when the page is apper -->
+  <transition name="zoom" type="animation" appear >
+    <h2 v-if="flag">Hellooooo</h2>
   </transition>
 </template>
 
@@ -17,22 +11,57 @@ export default {
   name: "App",
   data() {
     return {
-      flag: false,
+      flag: true,
     };
   },
 };
 </script>
 
 <style>
-.fade-enter-from {
-  opacity: 0;
-}
-.fade-enter-active {
-  transition: all 3s linear;
+h2{
+  width: 400px;
+  padding:20px;
+  margin:20px;
 }
 
 .fade-leave-to {
-  transition: all 3s linear;
+  transition: all 1s linear;
   opacity: 0;
 }
+
+.zoom-enter-active {
+  animation: zoom-in 1s linear forwards;
+  transition: all 2s linear; /* type attribute above use seconds which we type  */
+}
+.zoom-leave-active {
+  transition: all 1s linear;
+  animation: zoom-out 2s linear forwards; /* type attribute above use seconds which we type  */
+}
+.zoom-enter-from {
+  opacity: 0;
+}
+.zoom-leave-to {
+  opacity: 0;
+}
+
+/* Create a zooming animation */
+@keyframes zoom-in {
+  from {
+    transform: scale(0,0);
+  }
+  to {
+    transform: scale(1,1);
+  }
+}
+
+@keyframes zoom-out {
+  from {
+    transform: scale(1,1);
+
+  }
+  to {
+    transform: scale(0,0);
+  }
+}
+
 </style>
