@@ -7,6 +7,7 @@
     @before-leave="beforeLeave"
     @leave="leave"
     @after-leave="afterLeave"
+    :css="false"
   >
     <h2 v-if="flag">Hey!</h2>
   </transition>
@@ -26,8 +27,13 @@ export default {
     },
     Enter(el, done) {
       console.log("enter event fired", el);
+      const animation = el.animate([{ transform: "scale3d(0,0,0)" }, {}], {
+        duration: 1000,
+      })
 
-      done();
+      animation.onFinish = () => {
+        done();
+      };
     },
     afterEnter(el) {
       console.log("after-enter event fired", el);
@@ -39,8 +45,14 @@ export default {
     },
     leave(el, done) {
       console.log("leave event fired", el);
+      const animation = el.animate([{}, { transform: "scale3d(0,0,0)"}], {
+        duration: 1000,
+      })
 
-      done();
+      animation.onFinish = () => {
+        done();
+      };
+
     },
     afterLeave(el) {
       console.log("after-leave event fired", el);
