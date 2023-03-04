@@ -9,6 +9,7 @@
 
       </div>
     </div>
+  <transition-group name="fade">
     <div
       class="single-question"
       v-for="(question, qi) in questions"
@@ -27,6 +28,7 @@
         </div>
       </div>
     </div>
+  </transition-group>
   </div>
 </template>
 
