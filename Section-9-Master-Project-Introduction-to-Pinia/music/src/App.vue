@@ -1,5 +1,5 @@
 <template>
-    <header></header>
+    <app-header></app-header>
 
   <!-- Introduction -->
   <section class="mb-8 py-20 text-white text-center relative">
@@ -278,13 +278,13 @@
 </template>
 
 <script>
-import Header from "@/components/Header.vue";
+import AppHeader from "@/components/Header.vue";
 import Auth from "@/components/Auth.vue";
 export default {
     name: "App",
-    components: {Auth, Header},
+    components: {Auth, AppHeader},
     component: {
-        Header,
+        AppHeader,
         Auth,
     }
 }
