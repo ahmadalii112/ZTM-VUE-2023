@@ -22,7 +22,9 @@
                     <div class="flex justify-between items-center pb-4">
                         <p class="text-2xl font-bold">Your Account</p>
                         <!-- Modal Close Button -->
-                        <div class="modal-close cursor-pointer z-50">
+                        <div
+                            @click="isOpen = false;"
+                            class="modal-close cursor-pointer z-50" >
                             <i class="fas fa-times"></i>
                         </div>
                     </div>
@@ -149,13 +151,14 @@
 </template>
 
 <script>
-import {mapState} from "pinia";
+import {mapState, mapWritableState} from "pinia";
 import useModalStores from "@/stores/modal"
 
 export default {
     name: "Auth",
     computed: {
-        ...mapState(useModalStores, ['hiddenClass'])
+        ...mapState(useModalStores, ['hiddenClass']),
+        ...mapWritableState(useModalStores, ['isOpen'])
     }
 }
 </script>
