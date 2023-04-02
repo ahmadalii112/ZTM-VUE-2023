@@ -23,8 +23,8 @@
                         <p class="text-2xl font-bold">Your Account</p>
                         <!-- Modal Close Button -->
                         <div
-                            @click="isOpen = false;"
-                            class="modal-close cursor-pointer z-50" >
+                            @click="modalVisibility = false;"
+                            class="modal-close cursor-pointer z-50">
                             <i class="fas fa-times"></i>
                         </div>
                     </div>
@@ -158,7 +158,9 @@ export default {
     name: "Auth",
     computed: {
         ...mapState(useModalStores, ['hiddenClass']),
-        ...mapWritableState(useModalStores, ['isOpen'])
+        ...mapWritableState(useModalStores, {
+            modalVisibility: "isOpen" // Alias
+        })
     }
 }
 </script>
