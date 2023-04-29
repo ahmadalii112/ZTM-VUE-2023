@@ -74,6 +74,17 @@
             </vee-field>
             <ErrorMessage class="text-red-600" name="country"/>
         </div>
+        <!-- User -->
+        <div class="mb-3">
+            <label class="inline-block mb-2">User</label>
+            <vee-field as="select" name="user"
+                       class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
+            >
+                <option value="Listener">Listener</option>
+                <option value="Artist">Artist</option>
+            </vee-field>
+            <ErrorMessage class="text-red-600" name="user"/>
+        </div>
         <!-- TOS -->
         <div class="mb-3 pl-6">
             <vee-field name="tos" value="1"
@@ -106,10 +117,12 @@ export default {
                 password: 'required|min:9|max:100|excluded:password',
                 confirm_password: 'passwords_mismatch:@password',
                 country: 'required|country_excluded:Antarctica',
+                user: 'required',
                 tos: 'tos',
             },
             userData: {
                 country: 'USA',
+                user: 'Artist',
             },
             // submission, show alert changing variants and show alert message
             reg_in_submission: false,
@@ -140,6 +153,7 @@ export default {
                     email: values.email,
                     age: values.age,
                     country: values.country,
+                    user: values.user,
                 })
             } catch (error) {
                 this.reg_in_submission = false;
