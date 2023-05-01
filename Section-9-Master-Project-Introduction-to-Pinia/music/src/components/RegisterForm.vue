@@ -74,6 +74,17 @@
             </vee-field>
             <ErrorMessage class="text-red-600" name="country"/>
         </div>
+        <!-- User -->
+        <div class="mb-3">
+            <label class="inline-block mb-2">User</label>
+            <vee-field as="select" name="user"
+                       class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
+            >
+                <option value="Listener">Listener</option>
+                <option value="Artist">Artist</option>
+            </vee-field>
+            <ErrorMessage class="text-red-600" name="user"/>
+        </div>
         <!-- TOS -->
         <div class="mb-3 pl-6">
             <vee-field name="tos" value="1"
@@ -94,6 +105,9 @@
 </template>
 
 <script>
+import {mapActions} from "pinia";
+import useUserStore from '@/stores/user';
+
 export default {
     name: "RegisterForm",
     data() {
@@ -105,10 +119,12 @@ export default {
                 password: 'required|min:9|max:100|excluded:password',
                 confirm_password: 'passwords_mismatch:@password',
                 country: 'required|country_excluded:Antarctica',
+                user: 'required',
                 tos: 'tos',
             },
             userData: {
                 country: 'USA',
+                user: 'Artist',
             },
             // submission, show alert changing variants and show alert message
             reg_in_submission: false,
@@ -119,15 +135,26 @@ export default {
         }
     },
     methods: {
-        register(values) {
+        ...mapActions(useUserStore, {
+            createUser: 'register'
+        }),
+        async register(values) {
             this.reg_show_alert = true;
             this.reg_in_submission = true;
             this.reg_alert_variant = "bg-blue-500";
             this.reg_alert_msg = "Please Wait! Your account is being created.";
-            // After success
+            try {
+                await this.createUser(values)
+            } catch (error) {
+                this.reg_in_submission = false;
+                this.reg_alert_variant = "bg-red-500";
+                this.reg_alert_msg = "An unexpected error occurred. Please try again later!";
+                return;
+            }
+
             this.reg_alert_variant = "bg-green-500";
             this.reg_alert_msg = "Success your account has been created.";
-            console.log(values)
+            window.location.reload();
         },
     }
 }
