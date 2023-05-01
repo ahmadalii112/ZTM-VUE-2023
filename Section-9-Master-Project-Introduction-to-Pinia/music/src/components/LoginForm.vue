@@ -72,7 +72,7 @@ export default {
             // After success
             this.login_alert_variant = "bg-green-500";
             this.login_alert_msg = "Success you are logging in.";
-            console.log(values);
+            window.location.reload();
         }
     }
 }
