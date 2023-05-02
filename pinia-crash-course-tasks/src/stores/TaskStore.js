@@ -11,4 +11,20 @@ export const useTaskStore = defineStore("taskStore", {
         name: "Ahmad Ali"
         // When you have different type of data then you can use different stores for them
     }),
+    getters: {
+        favs() {
+            // this refers to state
+            return this.tasks.filter(t => t.isFavorite);
+        },
+        totalCount: (state) => {
+            return state.tasks.length
+        },
+        favoriteCount() {
+            return this.tasks.reduce((previousValue, currentValue) => {
+                return currentValue.isFavorite
+                    ? previousValue + 1
+                    : previousValue
+            }, 0);
+        }
+    }
 })
