@@ -5,6 +5,10 @@
             <img src="./assets/pinia-logo.svg" alt="pinia logo">
             <h1> Pinia Tasks</h1>
         </header>
+        <!--   New Tasks Form -->
+        <div class="new-task-form">
+            <TaskForm />
+        </div>
         <!--   filter nav     -->
         <nav class="filter">
             <button @click="filter = 'all'">All Tasks</button>
@@ -31,9 +35,10 @@
 import {useTaskStore} from "@/stores/TaskStore";
 import TaskDetails from "@/components/TaskDetails.vue";
 import {ref} from "vue";
+import TaskForm from "@/components/TaskForm.vue";
 
 export default {
-    components: {TaskDetails},
+    components: {TaskForm, TaskDetails},
     // Composition API
     setup() {
         const taskStore = useTaskStore();
