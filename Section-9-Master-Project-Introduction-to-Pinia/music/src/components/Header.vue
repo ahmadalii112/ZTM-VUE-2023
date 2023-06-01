@@ -54,7 +54,7 @@ export default {
         this.userStore.signOut();
         console.log("Checking Current Route", this.$route)
         // we redirect the user by using 👇
-        if (this.$route.name === "manage"){
+        if (this.$route.meta.requiresAuth){
           this.$router.push({name: 'home'})
         }
       }
