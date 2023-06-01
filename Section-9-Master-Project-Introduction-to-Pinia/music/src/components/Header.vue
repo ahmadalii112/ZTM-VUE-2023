@@ -24,7 +24,7 @@
                         <li>
                             <a class="px-2 text-white"
                                href="#"
-                               @click.prevent="userStore.signOut()"
+                               @click.prevent="signOut()"
                             >LogOut</a>
                         </li>
                     </template>
@@ -48,7 +48,16 @@ export default {
         toggleAuthModal(){
             this.modalStore.isOpen  = !this.modalStore.isOpen;
             console.log(this.modalStore.isOpen);
+        },
+      signOut() {
+        // access the modal store signout
+        this.userStore.signOut();
+        console.log("Checking Current Route", this.$route)
+        // we redirect the user by using 👇
+        if (this.$route.name === "manage"){
+          this.$router.push({name: 'home'})
         }
+      }
     }
 }
 </script>
