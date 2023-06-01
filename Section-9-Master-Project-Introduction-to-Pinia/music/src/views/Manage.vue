@@ -179,7 +179,13 @@
 
 
 <script>
-
+export default {
+  name: 'manage',
+  beforeRouteEnter(to, from, next) {
+    console.log('BeforeRouteEnter Guard');
+    next();
+  }
+}
 </script>
 
 

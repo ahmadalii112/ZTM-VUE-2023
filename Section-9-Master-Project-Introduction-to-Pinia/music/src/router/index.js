@@ -19,6 +19,10 @@ const routes = [
     // alias: '/manage', //  use alias of old route and redirect to Manage Component
     path: "/manage-music",
     component: Manage,
+    beforeEnter: (to, from, next) => {
+      console.log('Manage Route Guard');
+      next();
+    }
   },
   {
     path: '/manage',
@@ -37,7 +41,6 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   console.log("Global Guard");
-  console.log(to, from);
   next();
 })
 export default router
