@@ -63,13 +63,14 @@ export default {
                 const storageRef = storage.ref('songs'); // music-c259.appspot.com/songs
                 const songsRef = storageRef.child(`songs/${file.name}`); // music-c259.appspot.com/songs/example.mp3
                 const task = songsRef.put(file)
-                this.uploads.push({
+                const uploadIndex = this.uploads.push({
                     task,
                     current_progress: 0,
                     name: file.name,
-                })
+                }) - 1 ;// for getting index of latest item in the array
                 task.on('state_changed', (snapshot) => {
                    const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                   this.uploads[uploadIndex].current_progress = progress
 
                 })
             })
