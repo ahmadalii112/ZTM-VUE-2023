@@ -59,6 +59,7 @@
 
 
 <script>
+import {storage} from "@/includes/firebase";
 export default {
     name: "Upload",
     data() {
@@ -75,6 +76,9 @@ export default {
                 if (file.type !== 'audio/mpeg') {
                     return;
                 }
+                const storageRef = storage.ref('songs'); // music-c259.appspot.com/songs
+                const songsRef = storageRef.child(`songs/${file.name}`); // music-c259.appspot.com/songs/example.mp3
+                songsRef.put(file)
             })
             console.log(files)
         }
