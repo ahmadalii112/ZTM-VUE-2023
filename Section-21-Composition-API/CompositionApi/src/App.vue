@@ -10,6 +10,8 @@
       <input type="text" v-model="phrase"/>
     </p>
     <p>{{ reveredPhrase }}</p>
+
+    <app-alert :user="user"/>
   </div>
 </template>
 
@@ -24,9 +26,12 @@ import {
   onBeforeMount,
   onMounted
 } from "vue";
-
+import AppAlert from "../Components/Alert.vue";
 export default {
   name: "App",
+  components: {
+    AppAlert
+  },
   setup() {
     onBeforeMount(() => {
       console.log("on before Mount")
@@ -76,7 +81,8 @@ export default {
       ...toRefs(user), // Spread Operator
       phrase,
       reveredPhrase,
-      double
+      double,
+      user
     }
   }
 };
