@@ -12,6 +12,7 @@
     <p>{{ reveredPhrase }}</p>
 
     <app-alert :user="user"/>
+    <button type="button" ref="btn">Button</button>
   </div>
 </template>
 
@@ -33,11 +34,15 @@ export default {
     AppAlert
   },
   setup() {
+    const btn = ref(null) // It will also save template reference too
     onBeforeMount(() => {
       console.log("on before Mount")
     })
     onMounted(() => {
       console.log("on Mount")
+      btn.value.addEventListener('click', () =>{
+        console.log("Button Clicked")
+      })
     })
 
     let num = ref(0); // ref function returns an object
@@ -82,7 +87,8 @@ export default {
       phrase,
       reveredPhrase,
       double,
-      user
+      user,
+      btn, // when setup function call we create a reactive reference
     }
   }
 };
