@@ -14,15 +14,27 @@
 </template>
 
 <script>
-// import {ref, reactive} from "vue"; // For reactivity
-// import {ref, reactive, toRefs } from "vue"; // the two refs functions converts an object's properties into separate reactive references
-// import {ref, reactive, toRefs, watchEffect} from "vue"; // watchEffect => watch dependencies of the function
-// import {ref, reactive, toRefs, watchEffect, watch } from "vue";
-import {ref, reactive, toRefs, watchEffect, watch, computed } from "vue";
+import {
+  ref,
+  reactive,
+  toRefs,
+  watchEffect,
+  watch,
+  computed,
+  onBeforeMount,
+  onMounted
+} from "vue";
 
 export default {
   name: "App",
   setup() {
+    onBeforeMount(() => {
+      console.log("on before Mount")
+    })
+    onMounted(() => {
+      console.log("on Mount")
+    })
+
     let num = ref(0); // ref function returns an object
     console.log(num);
     function increment(){
