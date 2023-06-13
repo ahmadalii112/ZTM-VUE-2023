@@ -16,7 +16,7 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import {
   ref,
   reactive,
@@ -27,50 +27,32 @@ import {
 import AppAlert from "@/components/Alert.vue";
 import {useNumber} from "./hooks/number";
 import {usePhrase} from "./hooks/phrase";
-export default {
-  name: "App",
-  components: {
-    AppAlert
-  },
-  setup() {
-    const btn = ref(null) // It will also save template reference too
-    onBeforeMount(() => {
-      console.log("on before Mount")
-    })
-    onMounted(() => {
-      console.log("on Mount")
-      btn.value.addEventListener('click', () =>{
-        console.log("Button Clicked")
-      })
-    })
 
-    const user = reactive({
-      name: "Ahmad",
-      age: 20
-    });
+const btn = ref(null) // It will also save template reference too
+onBeforeMount(() => {
+  console.log("on before Mount")
+})
+onMounted(() => {
+  console.log("on Mount")
+  btn.value.addEventListener('click', () => {
+    console.log("Button Clicked")
+  })
+})
 
-    setTimeout(() => {
-      user.name = "Ali"
-    }, 3000);
+const user = reactive({
+  name: "Ahmad",
+  age: 20
+});
+
+setTimeout(() => {
+  user.name = "Ali"
+}, 3000);
 
 
-    const  {num, increment, double} = useNumber();
-    const {phrase, reveredPhrase, num: PhraseNum} = usePhrase()
+const {num, increment, double} = useNumber();
+const {phrase, reveredPhrase, num: PhraseNum} = usePhrase()
 
-    return {
-      num,
-      increment,
-      // user,
-      ...toRefs(user), // Spread Operator
-      phrase,
-      reveredPhrase,
-      double,
-      user,
-      btn, // when setup function call we create a reactive reference
-      PhraseNum,
-    }
-  }
-};
+const {name} = toRefs(user);
 
 
 /*
