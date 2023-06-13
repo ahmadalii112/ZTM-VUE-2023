@@ -1,9 +1,14 @@
 // Composition Functions
-import {computed, ref} from "vue";
+import {computed, ref, isRef, isReactive, reactive} from "vue";
 
 export const useNumber = () => {
     let num = ref(0); // ref function returns an object
-    console.log(num);
+    const accounts = reactive({
+        checking: 3242,
+        saving: 242,
+    })
+    console.log(isRef(num));
+    console.log(isReactive(accounts));
     function increment(){
         num.value++
     }
