@@ -21,13 +21,12 @@ import {
   ref,
   reactive,
   toRefs,
-  watchEffect,
-  watch,
-  computed,
   onBeforeMount,
   onMounted
 } from "vue";
-import AppAlert from "../Components/Alert.vue";
+import AppAlert from "@/components/Alert.vue";
+import {useNumber} from "./hooks/number";
+import {usePhrase} from "./hooks/phrase";
 export default {
   name: "App",
   components: {
@@ -45,16 +44,6 @@ export default {
       })
     })
 
-    let num = ref(0); // ref function returns an object
-    console.log(num);
-    function increment(){
-      num.value++
-    }
-
-    const double = computed(() => {
-      return num.value * 2;
-    })
-
     const user = reactive({
       name: "Ahmad",
       age: 20
@@ -63,21 +52,10 @@ export default {
     setTimeout(() => {
       user.name = "Ali"
     }, 3000);
-    const phrase = ref("");
-    const reveredPhrase = ref("");
 
-    // One Way of using Watcher
-    watchEffect(() => {
-      reveredPhrase.value = phrase.value.split("").reverse().join("");
-    });
-    /* Second Way of using Watcher
-        - it watches only phrase because we pass it
-        - in function we can pass two args newVal and oldVal
-        - if we watch multiple dependencies then we pass first args as an array [phrase] and function parameters also will be as an array [newValue, oldValue]
-    watch([phrase], ([newValue, oldValue]) => {
-      reveredPhrase.value = phrase.value.split("").reverse().join("");
-    });
-    */
+
+    const  {num, increment, double} = useNumber();
+    const {phrase, reveredPhrase, num: PhraseNum} = usePhrase()
 
     return {
       num,
@@ -89,6 +67,7 @@ export default {
       double,
       user,
       btn, // when setup function call we create a reactive reference
+      PhraseNum,
     }
   }
 };
