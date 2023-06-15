@@ -16,7 +16,7 @@
 <!--                v-model="newsletterName"-->
             </div>
             <div class="mb-2">
-              <EmailInput v-model="newsletterEmail"/>
+              <EmailInput v-model:email="newsletterEmail"/>
 <!--              <EmailInput
                   :modelValue="newsletterEmail"
                   @update:modelValue="newsletterEmail = $event"
