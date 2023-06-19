@@ -1,6 +1,9 @@
 <template>
   <div class="modal" :style="{ display: show ? 'block' : 'none' }">
-    <div class="modal-dialog" style="z-index: 2000">
+    <div class="modal-dialog" style="z-index: 2000"
+         @keydown.esc="close" tabindex="0"
+         ref="modal"
+    >
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">Awesome Title</h5>
@@ -26,5 +29,22 @@ export default {
       this.$emit("hide");
     },
   },
+  watch: {
+    show(newVal) {
+      if (newVal) {
+        this.$nextTick(
+            () => {
+              this.$refs.modal.focus();
+            }
+        )
+      }
+    }
+  }
 };
 </script>
+
+<style scoped>
+.modal-dialog {
+  outline: 0;
+}
+</style>
